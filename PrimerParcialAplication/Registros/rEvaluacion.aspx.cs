@@ -160,12 +160,12 @@ namespace PrimerParcialAplication.Registros
                     PerdidoTextBox.Text = "";
                 }
 
-                decimal total = 0;
-                total = Utils.ToDecimal(TotalTextBox.Text);
-                if (total > 69)
-                    EstadoTextBox.Text = "Aprobado";
-                else
-                    EstadoTextBox.Text = "Reprobado";
+                //decimal total = 0;
+                //total = Utils.ToDecimal(TotalTextBox.Text);
+                //if (total > 69)
+                //    EstadoTextBox.Text = "Aprobado";
+                //else
+                //    EstadoTextBox.Text = "Reprobado";
             }
         }
 
@@ -256,6 +256,16 @@ namespace PrimerParcialAplication.Registros
             }
             else
                 Utils.ShowToastr(this, "No existe", "Error", "error");
+        }
+
+        protected void TotalTextBox_TextChanged(object sender, EventArgs e)
+        {
+            RepositorioEvaluacion repositorio = new RepositorioEvaluacion();
+            int total = Utils.ToInt(TotalTextBox.Text);
+            string estado = string.Empty;
+            estado = repositorio.Estado(total);
+
+            EstadoTextBox.Text = estado;
         }
     }
 }

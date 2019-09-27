@@ -36,5 +36,17 @@ namespace BLL
             }
             return evaluacion;
         }
+
+        public string Estado(int num)
+        {
+            string estado = string.Empty;
+            if (num > 69)
+                estado = "Aprobado";
+            else
+                estado = "Reprobado";
+
+            return estado;
+        }
+
     }
 }

@@ -96,7 +96,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div class="form-group col-md-2">
                                 <asp:Label ID="Label3" runat="server" Text="Total"></asp:Label>
-                                <asp:TextBox class="form-control" ID="TotalTextBox" Text="0" runat="server" Width="200px" ReadOnly="True" BackColor="#3399FF"></asp:TextBox>
+                                <asp:TextBox class="form-control" ID="TotalTextBox" Text="0" runat="server" Width="200px" ReadOnly="True" BackColor="#3399FF" OnTextChanged="TotalTextBox_TextChanged"></asp:TextBox>
                             </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div class="form-group col-md-2">
                                 <asp:Label ID="Label5" runat="server" Text="Estado"></asp:Label>
@@ -118,5 +118,6 @@
     </div>
     </div>
 </div>
+    </div>
     </div>
 </asp:Content>
