@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -75,33 +77,18 @@ namespace PrimerParcialAplication.Utilitarios
             page.ClientScript.RegisterStartupScript(page.GetType(), "toastr_message",
                  String.Format("toastr.{0}('{1}', '{2}');", type.ToLower(), message, title), addScriptTags: true);
         }
+
+        public static List<EvaluacionDetalle> ListaDetalle(int IdLista)
+        {
+            Repositorio<EvaluacionDetalle> repositorio = new Repositorio<EvaluacionDetalle>();
+            List<EvaluacionDetalle> list = new List<EvaluacionDetalle>();
+            int id = IdLista;
+            list = repositorio.GetList(c => c.EvaluacionId == id);
+
+            return list;
+        }
+
         
-
-        //public static List<TipoAnalisis> FiltrarTipoAnalisis(int index, string criterio, DateTime desde, DateTime hasta)
-        //{
-        //    Expression<Func<TipoAnalisis, bool>> filtro = p => true;
-        //    Repositorio<TipoAnalisis> repositorio = new Repositorio<TipoAnalisis>();
-        //    List<TipoAnalisis> list = new List<TipoAnalisis>();
-
-        //    int id = ToInt(criterio);
-        //    switch (index)
-        //    {
-        //        case 0://Todo
-        //            break;
-
-        //        case 1://FacturaId
-        //            filtro = p => p.TipoId == id;
-        //            break;
-
-        //        case 2://ClienteId
-        //            filtro = p => p.Descripcion.Contains(criterio);
-        //            break;
-        //    }
-
-        //    list = repositorio.GetList(filtro);
-
-        //    return list;
-        //}
 
     }
 }

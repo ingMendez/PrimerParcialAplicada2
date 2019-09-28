@@ -184,13 +184,31 @@ namespace PrimerParcialAplication.Registros {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// TotalTextBox control.
+        /// TotalLogradosTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TotalTextBox;
+        protected global::System.Web.UI.WebControls.TextBox TotalLogradosTextBox;
+        
+        /// <summary>
+        /// Label10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label10;
+        
+        /// <summary>
+        /// TotalPerdidosTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TotalPerdidosTextBox;
         
         /// <summary>
         /// Label5 control.

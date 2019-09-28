@@ -48,5 +48,13 @@ namespace BLL
             return estado;
         }
 
+        public decimal Perdidos(decimal valor, decimal logrado)
+        {
+            decimal resultado = 0;
+            resultado = valor - logrado;
+
+            return resultado;
+        }
+
     }
 }

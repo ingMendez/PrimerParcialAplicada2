@@ -14,7 +14,8 @@ namespace Entities
         public int EvaluacionId { get; set; }
         public DateTime Fecha { get; set; }
         public string NombreEstudiante { get; set; }
-        public decimal Total { get; set; }
+        public decimal TotalLogrados { get; set; }
+        public decimal TotalPerdidos { get; set; }
         public string Estado { get; set; }
         public List<EvaluacionDetalle> Detalle { get; set; }
 
@@ -23,7 +24,8 @@ namespace Entities
             EvaluacionId = 0;
             Fecha = DateTime.Now;
             NombreEstudiante = string.Empty;
-            Total = 0;
+            TotalLogrados = 0;
+            TotalPerdidos = 0;
             Estado = string.Empty;
             this.Detalle = new List<EvaluacionDetalle>();
         }

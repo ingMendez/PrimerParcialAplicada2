@@ -16,7 +16,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="Fecha"></asp:Label>
                             </div>
                             <div class="col-lg-1 p-0">
-                                <asp:TextBox class="form-control" ID="FechaTextBox"  type="date" Width="190px" runat="server"></asp:TextBox>
+                                <asp:TextBox class="form-control" ID="FechaTextBox" type="date" Width="190px" runat="server"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-row">
@@ -56,12 +56,12 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <asp:Label ID="Label9" runat="server" Text="Logrado"></asp:Label>
-                                <asp:TextBox class="form-control" ID="LogradoTextBox" type="number" runat="server" Width="140px"></asp:TextBox>
+                                <asp:TextBox class="form-control" ID="LogradoTextBox" type="number" runat="server" Width="140px" AutoPostBack="True" OnTextChanged="LogradoTextBox_TextChanged"></asp:TextBox>
                             </div>
                             <div class="form-group col-md-2">
                                 <asp:Label ID="Label11" runat="server" Text="Perdido"></asp:Label>
-                                <asp:TextBox class="form-control" ID="PerdidoTextBox" runat="server" Width="140px"></asp:TextBox>
-                            </div>
+                                <asp:TextBox class="form-control" ID="PerdidoTextBox" runat="server" Width="140px" ReadOnly="True"></asp:TextBox>
+                            </div>&nbsp;&nbsp;&nbsp;&nbsp;
                             <div class="col-lg-1 p-0">
                                 <asp:LinkButton ID="agregarLinkButton" CssClass="btn btn-warning mt-4" runat="server" OnClick="agregarLinkButton_Click">
                                 <span class="fas fa-search"></span>Agregar
@@ -76,10 +76,16 @@
                                     <div class="form-row justify-content-center">
                                         <div class="form-group">
                                             <asp:Label ID="Label2" runat="server" Text="Detalle" Font-Bold="True" ValidateRequestMode="Inherit" Font-Size="Large"></asp:Label>
-                                            <asp:GridView ID="detalleGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#0066FF" GridLines="None">
+                                            <asp:GridView ID="detalleGridView" runat="server" class="table table-condensed table-bordered table-responsive"
+                                                AutoGenerateColumns="False" CellPadding="4" ForeColor="#0066FF" GridLines="None" OnRowCommand="detalleGridView_RowCommand" OnPageIndexChanging="detalleGridView_PageIndexChanging">
                                                 <AlternatingRowStyle BackColor="#999999" />
                                                 <Columns>
-                                                     <asp:BoundField DataField="Categoria" HeaderText="Categoria" />
+                                                    <asp:TemplateField ShowHeader="False">
+                                                        <ItemTemplate>
+                                                            <asp:Button ID="removerLinkButton" class="btn btn-danger btn-sm" runat="server" CausesValidation="False" CommandName="Select" CommandArgument="<%#((GridViewRow) Container).DataItemIndex %>" Text="Remover"></asp:Button>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="Categoria" HeaderText="Categoria" />
                                                     <asp:BoundField DataField="Valor" HeaderText="Valor" />
                                                     <asp:BoundField DataField="Logrado" HeaderText="Logrado" />
                                                     <asp:BoundField DataField="Perdido" HeaderText="Perdido" />
@@ -95,13 +101,19 @@
                         <div class="form-row">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div class="form-group col-md-2">
-                                <asp:Label ID="Label3" runat="server" Text="Total"></asp:Label>
-                                <asp:TextBox class="form-control" ID="TotalTextBox" Text="0" runat="server" Width="200px" ReadOnly="True" BackColor="#3399FF" OnTextChanged="TotalTextBox_TextChanged"></asp:TextBox>
-                            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="Label3" runat="server" Text="Total Logrados"></asp:Label>
+                                <asp:TextBox class="form-control" ID="TotalLogradosTextBox" Text="0" runat="server" Width="150px" ReadOnly="True" BackColor="#3399FF" OnTextChanged="TotalTextBox_TextChanged"></asp:TextBox>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="form-group col-md-2">
+                                <asp:Label ID="Label10" runat="server" Text="Total Perdidos"></asp:Label>
+                                <asp:TextBox class="form-control" ID="TotalPerdidosTextBox" runat="server" Width="150px" BackColor="#3399FF" ReadOnly="True"></asp:TextBox>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div class="form-group col-md-2">
                                 <asp:Label ID="Label5" runat="server" Text="Estado"></asp:Label>
-                                <asp:TextBox class="form-control" ID="EstadoTextBox" runat="server" Width="200px" BackColor="#3399FF" ReadOnly="True"></asp:TextBox>
-                            </div>
+                                <asp:TextBox class="form-control" ID="EstadoTextBox" runat="server" Width="150px" BackColor="#3399FF" ReadOnly="True"></asp:TextBox>
+                            </div>                            
                         </div>
                         <div class="panel-footer">
                             <div class="text-center">
@@ -118,6 +130,7 @@
     </div>
     </div>
 </div>
+    </div>
     </div>
     </div>
 </asp:Content>
